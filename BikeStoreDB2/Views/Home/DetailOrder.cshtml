@@ -1,0 +1,98 @@
+﻿
+@{
+    ViewBag.Title = "Sipariş Detay";
+}
+
+<h2 class="text-center">Sipariş Detay</h2>
+<style>
+    body {
+        background-size: 10000px;
+        background-image: url('../../images/hand-painted-watercolor-background-with-sky-clouds-shape.jpg');
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-color: white;
+    }
+
+    ::-webkit-scrollbar {
+        width: 20px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 10px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: brown;
+        border-radius: 10px;
+    }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: sandybrown;
+        }
+</style>
+<form method="post" action="/Home/CreateOrder">
+    <div class="container">
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="CustomerID" class="control-label">Müşteri Seçiniz :</label>
+                <select class="form-control" name="customer_id" id="CustomerID">
+                    @if (Model.customerList != null && Model.customerList.Count > 0)
+                    {
+                        foreach (var item in Model.customerList)
+                        {
+                            <option selected value="@item.customer_id">@item.first_name @item.last_name</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="CategoryID" class="control-label">Çalışan Seçiniz :</label>
+                <select class="form-control" name="staff_id" id="CategoryID">
+                    @if (Model.staffList != null && Model.staffList.Count > 0)
+                    {
+                        foreach (var item in Model.staffList)
+                        {
+                            <option selected value="@item.staff_id">@item.first_name @item.last_name</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="ProductID" class="control-label">Ürün Seçiniz :</label>
+                <select class="form-control" name="product_id" id="ProductID">
+                    @if (Model.productList != null && Model.productList.Count > 0)
+                    {
+                        foreach (var item in Model.productList)
+                        {
+                            <option selected value="@item.product_id">@item.product_name</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="quantity">Adet</label>
+                <input id="quantity" name="quantity" type="text" class="form-control" value="@Model.quantity"></input>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="StoreID" class="control-label">Mağaza Seçiniz :</label>
+                <select class="form-control" name="store_id" id="StoreID">
+                    @if (Model.storeList != null && Model.storeList.Count > 0)
+                    {
+                        foreach (var item in Model.storeList)
+                        {
+                            <option selected value="@item.store_id">@item.store_name</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+
+    </div>
+
+</form>

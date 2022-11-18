@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewBag.Title = "Çalışan Düzenle";
+}
+
+<h2 class="text-center">Çalışan Düzenle</h2>
+<style>
+    body {
+        background-size: 10000px;
+        background-image: url('../../images/hand-painted-watercolor-background-with-sky-clouds-shape.jpg');
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-color: white;
+    }
+
+    ::-webkit-scrollbar {
+        width: 20px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 10px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: brown;
+        border-radius: 10px;
+    }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: sandybrown;
+        }
+</style>
+<form method="post" action="/Home/EditStaff">
+    <div class="container">
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="StaffID" class="control-label">Müdür seçiniz :</label>
+                <select class="form-control" name="manager_id" id="StaffID">
+                    @foreach (var item in Model.managerList)
+                    {
+                        if (item.staff_id == Model.staff.manager_id)
+                        {
+                            <option selected value="@item.staff_id">@item.first_name @item.last_name</option>
+                        }
+                        else
+                        {
+                            <option value="@item.staff_id">@item.first_name @item.last_name</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="StoreID" class="control-label">Mağaza Seçiniz :</label>
+                <select class="form-control" name="store_id" id="StoreID">
+                    <option selected>Seçiniz</option>
+                    @foreach (var item in Model.storeList)
+                    {
+                        if (item.store_id == Model.staff.store_id)
+                        {
+                            <option selected value="@item.store_id">@item.store_name</option>
+                        }
+                        else
+                        {
+                            <option value="@item.store_id">@item.store_name</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="first_name">Çalışan Adı</label>
+                <input id="first_name" name="first_name" type="text" class="form-control" value="@Model.staff.first_name"></input>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="last_name">Çalışan Soyadı</label>
+                <input id="last_name" name="last_name" type="text" class="form-control" value="@Model.staff.last_name"></input>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="text" class="form-control" value="@Model.staff.email"></input>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="phone">Telefon</label>
+                <input id="phone" name="phone" type="text" class="form-control" value="@Model.staff.phone"></input>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg btn-block">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"></path>
+            </svg>
+            Düzenle
+        </button>
+
+    </div>
+
+</form>
+

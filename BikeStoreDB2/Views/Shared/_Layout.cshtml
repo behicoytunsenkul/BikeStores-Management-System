@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title -  Bisiklet Mağazası</title>
+
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body>
+    <style>
+        .navbar-inverse{
+            border:double;
+        }
+        .nav a {
+            position:center;
+            color:black;
+        }
+        .navbar-toggle b {
+            color:gold
+        }
+       
+    </style>
+
+
+
+    <div style="background-color:lightgreen;font-palette:normal;border:dotted;border-color:darkorange;font-family:georgia"  class="icon-bar five-up navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar" title="more options">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <ul class="nav2">
+                            @Html.ActionLink("Bisiklet Mağazası", "About", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                        </ul>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="mynavbar">
+
+                        <ul class="nav navbar-nav">
+
+                            <li>@Html.ActionLink("Müşteriler", "CustomerList", "Home")</li>
+                            <li>@Html.ActionLink("Ürünler", "ProductList", "Home")</li>
+                            <li>@Html.ActionLink("Kategoriler", "CategoryList", "Home")</li>
+                            <li>@Html.ActionLink("Markalar", "BrandList", "Home")</li>
+                            <li>@Html.ActionLink("Siparişler", "OrderList", "Home")</li>
+                            <li>@Html.ActionLink("Çalışanlar", "StaffList", "Home")</li>
+                            <li>@Html.ActionLink("Geliştirici Bilgileri", "Contact", "Home")</li>
+
+
+ 
+                        </ul>
+                        
+                    </div>
+                </div>
+            </div>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p style="color:white;background-color:red;text-align:center;font-family:sans-serif" >&copy; @DateTime.Now.Year - Developed by Behiç Oytun Şenkul</p>
+            </footer>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+
+    
+</body>
+</html>
